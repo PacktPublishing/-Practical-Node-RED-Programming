@@ -1,0 +1,200 @@
+[
+    {
+        "id": "f0ddf14a.a29ff",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "f43c5f89.73597",
+        "type": "inject",
+        "z": "f0ddf14a.a29ff",
+        "name": "Inject",
+        "props": [
+            {
+                "p": "payload",
+                "v": "",
+                "vt": "date"
+            },
+            {
+                "p": "topic",
+                "v": "",
+                "vt": "string"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 80,
+        "wires": [
+            [
+                "adfe68ce.2caa38",
+                "a1dae8bf.743e78",
+                "ddb04864.f88998"
+            ]
+        ]
+    },
+    {
+        "id": "ed086b63.22b688",
+        "type": "csv",
+        "z": "f0ddf14a.a29ff",
+        "name": "",
+        "sep": ",",
+        "hdrin": true,
+        "hdrout": "none",
+        "multi": "mult",
+        "ret": "\\n",
+        "temp": "",
+        "skip": "1",
+        "strings": true,
+        "x": 530,
+        "y": 80,
+        "wires": [
+            [
+                "261b327f.37f92e"
+            ]
+        ]
+    },
+    {
+        "id": "261b327f.37f92e",
+        "type": "debug",
+        "z": "f0ddf14a.a29ff",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 830,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "adfe68ce.2caa38",
+        "type": "template",
+        "z": "f0ddf14a.a29ff",
+        "name": "CSV data",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "# This is some random data\na,b,c\n80,18,2\n52,36,10\n91,18,61\n32,47,65",
+        "output": "str",
+        "x": 340,
+        "y": 80,
+        "wires": [
+            [
+                "ed086b63.22b688"
+            ]
+        ]
+    },
+    {
+        "id": "a1dae8bf.743e78",
+        "type": "http request",
+        "z": "f0ddf14a.a29ff",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "url": "https://nodered.org",
+        "tls": "",
+        "x": 350,
+        "y": 160,
+        "wires": [
+            [
+                "2186a963.7809d6"
+            ]
+        ]
+    },
+    {
+        "id": "3110c1f7.4698ce",
+        "type": "debug",
+        "z": "f0ddf14a.a29ff",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 830,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "2186a963.7809d6",
+        "type": "html",
+        "z": "f0ddf14a.a29ff",
+        "name": "",
+        "property": "",
+        "tag": ".node-red-latest-version",
+        "ret": "text",
+        "as": "single",
+        "x": 590,
+        "y": 160,
+        "wires": [
+            [
+                "3110c1f7.4698ce"
+            ]
+        ]
+    },
+    {
+        "id": "810ee4ef.a42df8",
+        "type": "json",
+        "z": "f0ddf14a.a29ff",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 530,
+        "y": 260,
+        "wires": [
+            [
+                "3f7150bd.fea26"
+            ]
+        ]
+    },
+    {
+        "id": "3f7150bd.fea26",
+        "type": "debug",
+        "z": "f0ddf14a.a29ff",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 830,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "ddb04864.f88998",
+        "type": "change",
+        "z": "f0ddf14a.a29ff",
+        "name": "JSON data",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"a\":1}",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 350,
+        "y": 260,
+        "wires": [
+            [
+                "810ee4ef.a42df8"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,207 @@
+[
+    {
+        "id": "e843ae6d.0d38d",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "559168bd.c63698",
+        "type": "inject",
+        "z": "e843ae6d.0d38d",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 60,
+        "wires": [
+            [
+                "f814ad0e.6bc1e",
+                "fecd7cdf.efefb"
+            ]
+        ]
+    },
+    {
+        "id": "24da9d16.ea7db2",
+        "type": "template",
+        "z": "e843ae6d.0d38d",
+        "name": "Output Small",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "The number is small: {{payload}} !",
+        "output": "str",
+        "x": 630,
+        "y": 120,
+        "wires": [
+            [
+                "c37d8a53.c76d18"
+            ]
+        ]
+    },
+    {
+        "id": "c37d8a53.c76d18",
+        "type": "debug",
+        "z": "e843ae6d.0d38d",
+        "name": "Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 790,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "fecd7cdf.efefb",
+        "type": "function",
+        "z": "e843ae6d.0d38d",
+        "name": "Generate Random Number",
+        "func": "// generate random number\nvar min = 1 ;\nvar max = 10 ;\nvar a = Math.floor( Math.random() * (max + 1 - min) ) + min ;\n\n// set random number to message\nmsg.payload = a;\n\n// return message\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 180,
+        "y": 160,
+        "wires": [
+            [
+                "3935b16b.95d8ae",
+                "6cd07885.9ca328"
+            ]
+        ]
+    },
+    {
+        "id": "f814ad0e.6bc1e",
+        "type": "debug",
+        "z": "e843ae6d.0d38d",
+        "name": "Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 790,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "3935b16b.95d8ae",
+        "type": "switch",
+        "z": "e843ae6d.0d38d",
+        "name": "Big and Small",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "lt",
+                "v": "6",
+                "vt": "num"
+            },
+            {
+                "t": "gt",
+                "v": "5",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 440,
+        "y": 160,
+        "wires": [
+            [
+                "24da9d16.ea7db2"
+            ],
+            [
+                "71a5135d.c2289c"
+            ]
+        ]
+    },
+    {
+        "id": "71a5135d.c2289c",
+        "type": "template",
+        "z": "e843ae6d.0d38d",
+        "name": "Output Big",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "The number is big: {{payload}} !",
+        "output": "str",
+        "x": 630,
+        "y": 200,
+        "wires": [
+            [
+                "c37d8a53.c76d18"
+            ]
+        ]
+    },
+    {
+        "id": "6cd07885.9ca328",
+        "type": "change",
+        "z": "e843ae6d.0d38d",
+        "name": "Change to String",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "It has been changed to string data!",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 450,
+        "y": 320,
+        "wires": [
+            [
+                "1e94a1f8.5283ce"
+            ]
+        ]
+    },
+    {
+        "id": "1e94a1f8.5283ce",
+        "type": "debug",
+        "z": "e843ae6d.0d38d",
+        "name": "Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 790,
+        "y": 320,
+        "wires": []
+    }
+]

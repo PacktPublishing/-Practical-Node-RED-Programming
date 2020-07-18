@@ -1,0 +1,122 @@
+[
+    {
+        "id": "b07a76f7.498b08",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "16cc0e17.34d562",
+        "type": "inject",
+        "z": "b07a76f7.498b08",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"name\":\"Taiji\"}",
+        "payloadType": "json",
+        "x": 140,
+        "y": 80,
+        "wires": [
+            [
+                "1e7cc04d.47fb"
+            ]
+        ]
+    },
+    {
+        "id": "1e7cc04d.47fb",
+        "type": "debug",
+        "z": "b07a76f7.498b08",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 650,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "6186dcc8.6ebfb4",
+        "type": "complete",
+        "z": "b07a76f7.498b08",
+        "name": "",
+        "scope": [
+            "16cc0e17.34d562"
+        ],
+        "uncaught": false,
+        "x": 130,
+        "y": 220,
+        "wires": [
+            [
+                "4b3e445c.89eb6c"
+            ]
+        ]
+    },
+    {
+        "id": "4b3e445c.89eb6c",
+        "type": "debug",
+        "z": "b07a76f7.498b08",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 650,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "855926ee.8ebd08",
+        "type": "catch",
+        "z": "b07a76f7.498b08",
+        "name": "",
+        "scope": null,
+        "uncaught": false,
+        "x": 120,
+        "y": 380,
+        "wires": [
+            [
+                "4b3e445c.89eb6c"
+            ]
+        ]
+    },
+    {
+        "id": "a275027e.ae796",
+        "type": "comment",
+        "z": "b07a76f7.498b08",
+        "name": "If the function will be complete, show the message!",
+        "info": "",
+        "x": 250,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "6685c022.607ad",
+        "type": "comment",
+        "z": "b07a76f7.498b08",
+        "name": "If the function will get error, show the message!",
+        "info": "",
+        "x": 240,
+        "y": 340,
+        "wires": []
+    }
+]

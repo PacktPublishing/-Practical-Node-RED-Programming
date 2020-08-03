@@ -1,0 +1,68 @@
+[
+    {
+        "id": "37f20f3f.00b69",
+        "type": "tab",
+        "label": "Light Sensor Sample Flow",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "723eda61.671884",
+        "type": "grove-light-sensor-v1_2",
+        "z": "37f20f3f.00b69",
+        "name": "",
+        "port_number": "2",
+        "x": 370,
+        "y": 80,
+        "wires": [
+            [
+                "f2401888.6efbf8"
+            ]
+        ]
+    },
+    {
+        "id": "40b5ba0b.b1e594",
+        "type": "inject",
+        "z": "37f20f3f.00b69",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 80,
+        "wires": [
+            [
+                "723eda61.671884"
+            ]
+        ]
+    },
+    {
+        "id": "f2401888.6efbf8",
+        "type": "debug",
+        "z": "37f20f3f.00b69",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 630,
+        "y": 80,
+        "wires": []
+    }
+]

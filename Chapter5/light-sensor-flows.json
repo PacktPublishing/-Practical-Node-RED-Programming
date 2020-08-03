@@ -1,0 +1,67 @@
+[
+    {
+        "id": "72b2fa34.b707e4",
+        "type": "tab",
+        "label": "Temp/Humi Sensor Smaple Flow",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "19c9aca2.bf5953",
+        "type": "grove-temperature-humidity-sensor-sht3x",
+        "z": "72b2fa34.b707e4",
+        "name": "",
+        "x": 360,
+        "y": 140,
+        "wires": [
+            [
+                "b6982c76.9dae5"
+            ]
+        ]
+    },
+    {
+        "id": "ecf09ada.b86388",
+        "type": "inject",
+        "z": "72b2fa34.b707e4",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 80,
+        "wires": [
+            [
+                "19c9aca2.bf5953"
+            ]
+        ]
+    },
+    {
+        "id": "b6982c76.9dae5",
+        "type": "debug",
+        "z": "72b2fa34.b707e4",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 630,
+        "y": 200,
+        "wires": []
+    }
+]

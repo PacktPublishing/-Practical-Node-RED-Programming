@@ -1,0 +1,116 @@
+[
+    {
+        "id": "560df2a4.686f4c",
+        "type": "tab",
+        "label": "Cloudant Smaple Flow",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "7dca6bca.db03e4",
+        "type": "inject",
+        "z": "560df2a4.686f4c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"temp\":\"29.18\",\"humi\":\"55.72\"}",
+        "payloadType": "json",
+        "x": 110,
+        "y": 120,
+        "wires": [
+            [
+                "c4e50fb5.0ab97"
+            ]
+        ]
+    },
+    {
+        "id": "c4e50fb5.0ab97",
+        "type": "cloudant out",
+        "z": "560df2a4.686f4c",
+        "name": "",
+        "cloudant": "",
+        "database": "packt_db",
+        "service": "your cloudant serivce name",
+        "payonly": false,
+        "operation": "insert",
+        "x": 360,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "7cf01441.8950ac",
+        "type": "debug",
+        "z": "560df2a4.686f4c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 610,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "5a545af1.5cb774",
+        "type": "inject",
+        "z": "560df2a4.686f4c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 240,
+        "wires": [
+            [
+                "c58ddba5.eb4278"
+            ]
+        ]
+    },
+    {
+        "id": "c58ddba5.eb4278",
+        "type": "cloudant in",
+        "z": "560df2a4.686f4c",
+        "name": "",
+        "cloudant": "",
+        "database": "packt_db",
+        "service": "your cloudant serivce name",
+        "search": "_all_",
+        "design": "",
+        "index": "",
+        "x": 360,
+        "y": 240,
+        "wires": [
+            [
+                "7cf01441.8950ac"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,119 @@
+[
+    {
+        "id": "dedc3f58.6c8b3",
+        "type": "tab",
+        "label": "Dashboard Sample Flow",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "c3e90d63.3175b",
+        "type": "inject",
+        "z": "dedc3f58.6c8b3",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 80,
+        "wires": [
+            [
+                "f5fc25d1.9c3658"
+            ]
+        ]
+    },
+    {
+        "id": "f5fc25d1.9c3658",
+        "type": "function",
+        "z": "dedc3f58.6c8b3",
+        "name": "",
+        "func": "var min = -10 ;\nvar max = 10 ;\n\nmsg.payload = Math.floor( Math.random() * (max + 1 - min) ) + min ;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 310,
+        "y": 80,
+        "wires": [
+            [
+                "2935203f.16f25"
+            ]
+        ]
+    },
+    {
+        "id": "2935203f.16f25",
+        "type": "ui_chart",
+        "z": "dedc3f58.6c8b3",
+        "name": "",
+        "group": "6ac320e2.55b26",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "label": "chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 510,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6ac320e2.55b26",
+        "type": "ui_group",
+        "z": "",
+        "name": "Packt Chart",
+        "tab": "2a31edb0.87bb72",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "2a31edb0.87bb72",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]

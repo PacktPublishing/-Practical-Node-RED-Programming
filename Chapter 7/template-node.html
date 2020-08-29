@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>Watson Visual Recognition on Node-RED</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container-fluid">
+  <div class="col-sm-12">
+    <p>Watson Visual Recognition on Node-RED</p>
+  </div>
+
+  <div class="panel panel-success col-sm-12">
+    <div class="panel-heading">
+      Select an image file
+    </div>
+
+    <div class="panel-body" style="height:300px;">
+      <div class="row">
+        <form id="src_image" action="" method="post" enctype="multipart/form-data">
+          <input class="btn btn-info btn-ls" type="file" name="imagedata" accept="image/*"  />
+        </form>
+      </div>
+
+      <div class="row">
+        <div class="btn btn-danger btn-ls" onclick="callVisualRecognition()"/>
+          Analyze
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="preview">
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-footer">
+      <div id="result"></div>
+    </div>
+
+  </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+    var callVisualRecognition = function() {
+
+      // get form data
+      var formdata = new FormData($('#src_image').get(0));
+
+      console.log(formdata);
+
+      // upload as POST
+      $.ajax({
+          url  : "./vrtest-post",
+          type : "POST",
+          data : formdata,
+          cache       : false,
+          contentType : false,
+          processData : false,
+          dataType    : "html"
+      })
+      .done(function(data, textStatus, jqXHR) {
+        var result_element = document.getElementById('result');
+
+        var objResult = JSON.parse(data);
+
+        // delete child nodes
+        if (result_element.hasChildNodes()){
+          for (var i=result_element.childNodes.length-1; i>=0; i--) {
+            result_element.removeChild(result_element.childNodes[i]);
+          }
+        }
+
+        // set results
+        len = objResult.images[0].classifiers[0].classes.length;
+        for(i = 0; i<len; i++){
+
+            // Name
+            var name;
+            name = document.createTextNode("name="+objResult.images[0].classifiers[0].classes[i].class);
+            var nameBox = document.createElement('p');
+            nameBox.appendChild(name);
+            result_element.appendChild(nameBox);
+    
+            // Score
+            var score;
+            score = document.createTextNode("score="+objResult.images[0].classifiers[0].classes[i].score);
+            var scoreBox = document.createElement('p');
+            scoreBox.appendChild(score);
+            result_element.appendChild(scoreBox);
+        }
+
+        console.log(objResult);
+      })
+      .fail(function(jqXHR, textStatus, errorThrown) {
+          // connection error
+          // do nothing
+          return;
+      })
+      .always(function(data) {
+        // do nothing
+      });
+    }
+</script>
+
+<script>
+$(function(){
+  // image preview
+  $('form').on('change', 'input[type="file"]', function(e) {
+    var file = e.target.files[0],
+        reader = new FileReader(),
+        $preview = $(".preview");
+        t = this;
+
+    // do nothing other than image file
+    if(file.type.indexOf("image") < 0){
+      return false;
+    }
+
+    // complete loading image file
+    reader.onload = (function(file) {
+      return function(e) {
+        //delete existing preview
+        $preview.empty();
+        $preview.append($('<img>').attr({
+                  src: e.target.result,
+                  height: "150px",
+                  class: "preview",
+                  title: file.name
+              }));
+      };
+    })(file);
+
+    reader.readAsDataURL(file);
+  });
+});
+
+</script>
+</body>
+</html>

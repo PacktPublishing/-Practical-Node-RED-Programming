@@ -1,0 +1,108 @@
+[
+    {
+        "id": "421ffe5c.acda5",
+        "type": "tab",
+        "label": "OpenWeatherMap",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "c9bf5c3e.01d06",
+        "type": "inject",
+        "z": "421ffe5c.acda5",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 100,
+        "wires": [
+            [
+                "7ed98f7e.6f23e"
+            ]
+        ]
+    },
+    {
+        "id": "7ed98f7e.6f23e",
+        "type": "http request",
+        "z": "421ffe5c.acda5",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://api.openweathermap.org/data/2.5/weather?q=tokyo&appid=bd8c4915ed4b1e0d03129aa9d0157aea",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 290,
+        "y": 160,
+        "wires": [
+            [
+                "392cc883.fe42b8",
+                "123ccb32.9a1165"
+            ]
+        ]
+    },
+    {
+        "id": "392cc883.fe42b8",
+        "type": "json",
+        "z": "421ffe5c.acda5",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 450,
+        "y": 220,
+        "wires": [
+            [
+                "9380419f.68119"
+            ]
+        ]
+    },
+    {
+        "id": "9380419f.68119",
+        "type": "debug",
+        "z": "421ffe5c.acda5",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 630,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "123ccb32.9a1165",
+        "type": "debug",
+        "z": "421ffe5c.acda5",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 160,
+        "wires": []
+    }
+]

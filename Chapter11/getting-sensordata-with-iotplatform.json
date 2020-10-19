@@ -1,0 +1,160 @@
+[
+    {
+        "id": "4dd61228.dc95dc",
+        "type": "tab",
+        "label": "Getting Sensor Data with IoT Platform",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "4be700d5.7c67",
+        "type": "ibmiot in",
+        "z": "4dd61228.dc95dc",
+        "authentication": "apiKey",
+        "apiKey": "e50327cb.0d8878",
+        "inputType": "evt",
+        "logicalInterface": "",
+        "ruleId": "",
+        "deviceId": "taiponrock9999",
+        "applicationId": "",
+        "deviceType": "+",
+        "eventType": "+",
+        "commandType": "",
+        "format": "json",
+        "name": "IBM IoT",
+        "service": "registered",
+        "allDevices": "",
+        "allApplications": "",
+        "allDeviceTypes": true,
+        "allLogicalInterfaces": "",
+        "allEvents": true,
+        "allCommands": "",
+        "allFormats": "",
+        "qos": 0,
+        "x": 110,
+        "y": 80,
+        "wires": [
+            [
+                "1667bb47.5548e5"
+            ]
+        ]
+    },
+    {
+        "id": "af50eff.cb4ef1",
+        "type": "ui_chart",
+        "z": "4dd61228.dc95dc",
+        "name": "",
+        "group": "125e698f.cc43d6",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "label": "chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "-10",
+        "ymax": "50",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 650,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7d58096a.96b318",
+        "type": "debug",
+        "z": "4dd61228.dc95dc",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 670,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "1667bb47.5548e5",
+        "type": "change",
+        "z": "4dd61228.dc95dc",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.d.temperature",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 340,
+        "y": 80,
+        "wires": [
+            [
+                "af50eff.cb4ef1",
+                "7d58096a.96b318"
+            ]
+        ]
+    },
+    {
+        "id": "e50327cb.0d8878",
+        "type": "ibmiot",
+        "z": "",
+        "name": "Watson IoT",
+        "keepalive": "60",
+        "serverName": "gcadjl.messaging.internetofthings.ibmcloud.com",
+        "cleansession": true,
+        "appId": "",
+        "shared": false
+    },
+    {
+        "id": "125e698f.cc43d6",
+        "type": "ui_group",
+        "z": "",
+        "name": "Sensor Data on Cloud",
+        "tab": "2a31edb0.87bb72",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "2a31edb0.87bb72",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]

@@ -1,0 +1,112 @@
+[
+    {
+        "id": "47d3318f.dafad",
+        "type": "tab",
+        "label": "Get Sentiment from Twitter",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "101d719f.ff96be",
+        "type": "debug",
+        "z": "47d3318f.dafad",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "payload.text",
+        "x": 870,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "54a2fe59.809b7",
+        "type": "debug",
+        "z": "47d3318f.dafad",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "payload.tone",
+        "x": 870,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "51c62a94.076244",
+        "type": "watson-tone-analyzer-v3",
+        "z": "47d3318f.dafad",
+        "name": "Get the \"tone\" of the tweet",
+        "tones": "all",
+        "sentences": "true",
+        "contentType": "false",
+        "tone-method": "generalTone",
+        "interface-version": "2016-05-19",
+        "service-endpoint": "",
+        "x": 420,
+        "y": 140,
+        "wires": [
+            [
+                "981186c5.6c1348"
+            ]
+        ]
+    },
+    {
+        "id": "ab55c35c.b6d4a",
+        "type": "sentiment",
+        "z": "47d3318f.dafad",
+        "name": "Get the \"sentiment\" of the tweet",
+        "x": 430,
+        "y": 60,
+        "wires": [
+            [
+                "51c62a94.076244"
+            ]
+        ]
+    },
+    {
+        "id": "981186c5.6c1348",
+        "type": "function",
+        "z": "47d3318f.dafad",
+        "name": "Format the payload...",
+        "func": "msg.payload = {\n    \n    \"text\" : msg.payload,\n    \"tone\" : msg.response,\n    \"sentiment\" : msg.sentiment\n};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 400,
+        "y": 220,
+        "wires": [
+            [
+                "101d719f.ff96be",
+                "54a2fe59.809b7",
+                "54546cce.cc0d34"
+            ]
+        ]
+    },
+    {
+        "id": "54546cce.cc0d34",
+        "type": "debug",
+        "z": "47d3318f.dafad",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "payload.sentiment",
+        "x": 890,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "76c6845c.2dcadc",
+        "type": "twitter in",
+        "z": "47d3318f.dafad",
+        "twitter": "",
+        "tags": "#nodered",
+        "user": "false",
+        "name": "Get #nodered tweets",
+        "inputs": 0,
+        "x": 140,
+        "y": 60,
+        "wires": [
+            [
+                "ab55c35c.b6d4a"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,116 @@
+[
+    {
+        "id": "69fef16a.967be",
+        "type": "tab",
+        "label": "Slack Watson Chatbot",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "c0c6de74.c978c",
+        "type": "slack-rtm-in",
+        "z": "69fef16a.967be",
+        "client": "484fd924.0efb08",
+        "name": "",
+        "events": "",
+        "x": 130,
+        "y": 80,
+        "wires": [
+            [
+                "62720747.8a4858"
+            ]
+        ]
+    },
+    {
+        "id": "9bd0e23.e14522",
+        "type": "slack-rtm-out",
+        "z": "69fef16a.967be",
+        "client": "484fd924.0efb08",
+        "name": "",
+        "x": 480,
+        "y": 240,
+        "wires": [
+            [
+                "d907c59d.6ff1d8"
+            ]
+        ]
+    },
+    {
+        "id": "43127568.48fd0c",
+        "type": "watson-conversation-v1",
+        "z": "69fef16a.967be",
+        "name": "",
+        "workspaceid": "00e70b3e-99ef-4612-96ea-48b9075f14b5",
+        "multiuser": false,
+        "context": true,
+        "empty-payload": false,
+        "service-endpoint": "",
+        "timeout": "",
+        "optout-learning": false,
+        "x": 280,
+        "y": 160,
+        "wires": [
+            [
+                "5cd28344.72563c"
+            ]
+        ]
+    },
+    {
+        "id": "62720747.8a4858",
+        "type": "function",
+        "z": "69fef16a.967be",
+        "name": "",
+        "func": "global.set(\"channel\",msg.payload.channel);\n\nmsg.topic = \"message\";\nmsg.payload = msg.payload.text;\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 320,
+        "y": 80,
+        "wires": [
+            [
+                "43127568.48fd0c"
+            ]
+        ]
+    },
+    {
+        "id": "5cd28344.72563c",
+        "type": "function",
+        "z": "69fef16a.967be",
+        "name": "",
+        "func": "var g_channel=global.get(\"channel\");\n\nmsg.topic = \"message\";\nmsg.payload = {\n    channel: g_channel,\n    text: msg.payload.output.text[0]\n}\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 480,
+        "y": 160,
+        "wires": [
+            [
+                "9bd0e23.e14522"
+            ]
+        ]
+    },
+    {
+        "id": "d907c59d.6ff1d8",
+        "type": "debug",
+        "z": "69fef16a.967be",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 710,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "484fd924.0efb08",
+        "type": "slack-config",
+        "z": "",
+        "name": "packt-bot"
+    }
+]

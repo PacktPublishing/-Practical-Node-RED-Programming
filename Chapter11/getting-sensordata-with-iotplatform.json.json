@@ -1,0 +1,225 @@
+[
+    {
+        "id": "ee85ba8b.f3ba18",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "3618abd5.e809d4",
+        "type": "mqtt in",
+        "z": "ee85ba8b.f3ba18",
+        "name": "",
+        "topic": "packt",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "4c163788.a8d898",
+        "x": 120,
+        "y": 100,
+        "wires": [
+            [
+                "49861b9.05a0de4",
+                "4d372d77.47c054"
+            ]
+        ]
+    },
+    {
+        "id": "49861b9.05a0de4",
+        "type": "debug",
+        "z": "ee85ba8b.f3ba18",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 450,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "2430fcc6.5821d4",
+        "type": "change",
+        "z": "ee85ba8b.f3ba18",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.temperature",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 460,
+        "y": 180,
+        "wires": [
+            [
+                "72f3d3b2.40819c",
+                "d56f83da.918a3"
+            ]
+        ]
+    },
+    {
+        "id": "72f3d3b2.40819c",
+        "type": "debug",
+        "z": "ee85ba8b.f3ba18",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 730,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "4d372d77.47c054",
+        "type": "json",
+        "z": "ee85ba8b.f3ba18",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 270,
+        "y": 180,
+        "wires": [
+            [
+                "f3ae5d8f.67d66",
+                "2430fcc6.5821d4"
+            ]
+        ]
+    },
+    {
+        "id": "d56f83da.918a3",
+        "type": "ui_gauge",
+        "z": "ee85ba8b.f3ba18",
+        "name": "",
+        "group": "6a0c3ee9.df14a",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Tempereture",
+        "label": "°C",
+        "format": "{{value}}",
+        "min": "-15",
+        "max": "50",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 730,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "94c09754.2fcc38",
+        "type": "ui_gauge",
+        "z": "ee85ba8b.f3ba18",
+        "name": "",
+        "group": "6a0c3ee9.df14a",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Humidity",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 720,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "f3ae5d8f.67d66",
+        "type": "change",
+        "z": "ee85ba8b.f3ba18",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.humidity",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 460,
+        "y": 240,
+        "wires": [
+            [
+                "94c09754.2fcc38"
+            ]
+        ]
+    },
+    {
+        "id": "4c163788.a8d898",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "CloudMQTT",
+        "broker": "driver.cloudmqtt.com",
+        "port": "18913",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": false,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "6a0c3ee9.df14a",
+        "type": "ui_group",
+        "z": "",
+        "name": "Raspberry Pi Sensor data",
+        "tab": "c8a35afe.f1f788",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "c8a35afe.f1f788",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]

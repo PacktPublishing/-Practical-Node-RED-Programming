@@ -1,0 +1,119 @@
+[
+    {
+        "id": "7f8866e2.a2bb28",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "7dc930fe.804d7",
+        "type": "mqtt in",
+        "z": "7f8866e2.a2bb28",
+        "name": "",
+        "topic": "packt",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "8980c85b.607758",
+        "x": 130,
+        "y": 340,
+        "wires": [
+            [
+                "e4847c57.9e276"
+            ]
+        ]
+    },
+    {
+        "id": "b28c7ed7.7764",
+        "type": "mqtt out",
+        "z": "7f8866e2.a2bb28",
+        "name": "",
+        "topic": "packt",
+        "qos": "1",
+        "retain": "true",
+        "broker": "8980c85b.607758",
+        "x": 510,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "e4847c57.9e276",
+        "type": "debug",
+        "z": "7f8866e2.a2bb28",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 370,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "5a591834.5a02b8",
+        "type": "grove-temperature-humidity-sensor-sht3x",
+        "z": "7f8866e2.a2bb28",
+        "name": "",
+        "x": 300,
+        "y": 140,
+        "wires": [
+            [
+                "b28c7ed7.7764"
+            ]
+        ]
+    },
+    {
+        "id": "22f6287.cdcb6d8",
+        "type": "inject",
+        "z": "7f8866e2.a2bb28",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 60,
+        "wires": [
+            [
+                "5a591834.5a02b8"
+            ]
+        ]
+    },
+    {
+        "id": "8980c85b.607758",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": false,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    }
+]

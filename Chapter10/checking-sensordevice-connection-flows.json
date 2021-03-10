@@ -1,0 +1,67 @@
+[
+    {
+        "id": "884baee5.eef78",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "660b20d3.a61be",
+        "type": "inject",
+        "z": "884baee5.eef78",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 100,
+        "wires": [
+            [
+                "30e8e26a.cbb53e"
+            ]
+        ]
+    },
+    {
+        "id": "4bbfda35.c4b094",
+        "type": "debug",
+        "z": "884baee5.eef78",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 500,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "30e8e26a.cbb53e",
+        "type": "grove-temperature-humidity-sensor-sht3x",
+        "z": "884baee5.eef78",
+        "name": "",
+        "x": 300,
+        "y": 180,
+        "wires": [
+            [
+                "4bbfda35.c4b094"
+            ]
+        ]
+    }
+]

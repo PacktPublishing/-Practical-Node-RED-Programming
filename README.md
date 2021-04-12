@@ -49,6 +49,8 @@ With the following software and hardware list you can run all code files present
 | 2        | Node.js 12                          | Windows, Mac OS X, and Raspberry Pi OS |
 | 3        | npm 6                               | Windows, Mac OS X, and Raspberry Pi OS |
 
+We also provide a PDF file that has color images of the screenshots/diagrams used in this book. [Click here to download it](https://static.packt-cdn.com/downloads/9781800201590_ColorImages.pdf).
+
 ### Related products <Other books you may enjoy>
 * Building Low-Code Applications with Mendix [[Packt]](https://www.packtpub.com/product/building-low-code-applications-with-mendix/9781800201422) [[Amazon]](https://www.amazon.com/dp/1800201427)
 

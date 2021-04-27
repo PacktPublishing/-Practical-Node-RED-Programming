@@ -45,9 +45,9 @@ With the following software and hardware list you can run all code files present
 
 | Chapter  | Software required                   | OS required                        |
 | -------- | ------------------------------------| -----------------------------------|
-| 1        | Node-RED 1.2                        | Windows, Mac OS X, and Raspberry Pi OS |
-| 2        | Node.js 12                          | Windows, Mac OS X, and Raspberry Pi OS |
-| 3        | npm 6                               | Windows, Mac OS X, and Raspberry Pi OS |
+| 1-13        | Node-RED 1.2                        | Windows, Mac OS X, and Raspberry Pi OS |
+| 1-13       | Node.js 12                          | Windows, Mac OS X, and Raspberry Pi OS |
+| 1-13       | npm 6                               | Windows, Mac OS X, and Raspberry Pi OS |
 
 We also provide a PDF file that has color images of the screenshots/diagrams used in this book. [Click here to download it](https://static.packt-cdn.com/downloads/9781800201590_ColorImages.pdf).
 
